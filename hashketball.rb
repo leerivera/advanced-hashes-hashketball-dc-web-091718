@@ -179,8 +179,9 @@ end
 
 
 def player_stats(player_name)
- stats= players.find {|player| player.fetch(:player_name) == player_name}
- 
+ stats= players.find do |player|
+   player.fetch(:player_name) == player_name
+ end
  
   stats.delete_if {|info, string| info == :player_name}
 end
@@ -200,5 +201,9 @@ def big_shoe_rebounds
      shoe_size_hash[shoe_key] = rebounds
     end
   end
+  
+  
+  
+  
   return shoe_size_hash.max[1]
 end
